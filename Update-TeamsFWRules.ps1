@@ -47,7 +47,7 @@ Function Get-LoggedInUserProfile() {
 
     try {
     
-       $loggedInUser = Gwmi -Class Win32_ComputerSystem | select username -ExpandProperty username
+       $loggedInUser = Get-CimInstance -Class Win32_ComputerSystem | select username -ExpandProperty username
        $username = ($loggedInUser -split "\\")[1]
 
        #Identifying the correct path to the users profile folder - only selecting the first result in case there is a mess of profiles 
